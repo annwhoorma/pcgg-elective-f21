@@ -1,0 +1,8 @@
+NUMBER_OF_BARS = 2
+NOTES_PER_BAR = 4
+BITS_PER_NOTE = 3
+BEATS_PER_BAR = 4 # definitely a constant
+SCALE = 'major'
+SCALE_ROOT = 'C'
+PITCH_LEVEL = 4
+NUMBER_OF_STEPS = 1
