@@ -1,22 +1,25 @@
 from enum import Enum, auto
-from mountain_types import steep, volcano
+from mountain_types import hill, steep, calm
 
-class MountainType(Enum):
-    STEEP = auto()
-    VOLCANO = auto()
+class TileType(Enum):
+    HILL = auto()
+    CALM = auto()
+    STEEP = auto() # steep
 
-def get_config(mountype):
-    return Configuration(mountype)
+
+def get_config(mountype, start_height=20, split=4):
+    return Configuration(mountype, start_height, split)
+
 
 class Configuration:
-    def __init__(self, mountype):
-        self.start, self.values, self.table, self.threshold = None, None, None, None
+    def __init__(self, mountype, start_height, split):
+        self.start, self.values, self.table = None, None, None
         self.mountype = mountype
-        if mountype == MountainType.STEEP:
-            self.start_tile, self.values, self.table = steep.start_tile, steep.values, steep.table
-            self.start_value = steep.start_value
-        elif mountype == MountainType.VOLCANO:
-            self.start_tile, self.values =  volcano.start_tile, volcano.values
-            self.table_before, self.table_after = volcano.table_before, volcano.table_after
-            self.threshold = volcano.threshold
-            self.start_value = volcano.start_value
+        self.start_height = start_height
+        self.split = split
+        if mountype == TileType.HILL:
+            self.start_tile, self.values, self.table = hill.start_tile, hill.values, hill.table
+        elif mountype == TileType.STEEP:
+            self.start_tile, self.values, self.table =  steep.start_tile, steep.values, steep.table
+        elif mountype == TileType.CALM:
+            self.start_tile, self.values, self.table =  calm.start_tile, calm.values, calm.table

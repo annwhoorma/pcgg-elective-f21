@@ -17,7 +17,7 @@ w.addItem(g)
 
 size = (16, 16)
 x, y = np.zeros(size), np.zeros(size)
-z = generation.generate_steep(size)
+z = generation.generate_hill(size)
 print(x)
 print(y)
 z = np.array(z)

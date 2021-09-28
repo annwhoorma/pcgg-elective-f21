@@ -2,36 +2,32 @@ from random import choices
 from treelib import Node, Tree
 from typing import Tuple
 import numpy as np
-from all_types import MountainType
-from mountain_types import steep, volcano
+import click
 
-split = 4
 
-def create_root_tile(start_value, start_tile):
-    root = Tree()
-    root.create_node(start_value, data={'depth': 0, 'increment': start_tile})
-    root.leaves()
-    return root
-
-def generate_mountains(size, config):
-    tiles_tree = create_root_tile(config.start_value, config.start_tile)
-    if config.mountype == MountainType.STEEP:
-        __generate_steep__(size, config, tiles_tree)
-    elif config.mountype == MountainType.VOLCANO:
-        __generate_volcano__(size, config, tiles_tree)
+def generate_mountain(size, config):
+    tiles_tree = __create_root_tile__(config.start_height, config.start_tile)
+    __generate_one_type__(size, config, tiles_tree)
 
     root_node = tiles_tree.get_node(tiles_tree.root)
     mapping = __create_empty_matrix__(size=2 ** (tiles_tree.depth()))
-    center = (2 ** (tiles_tree.depth() - 1), 2 ** (tiles_tree.depth() - 1)) if tiles_tree.depth() > 1 else (1, 1)
+    center = (2 ** (tiles_tree.depth() - 1), 2 ** (tiles_tree.depth() - 1)) \
+                if tiles_tree.depth() > 1 else (1, 1)
     __fill_mapping__(tiles_tree, root_node, center, mapping)
     mapping = np.array(mapping)
     return mapping
 
 
-def __generate_steep__(size, config, tiles_tree):
+def __create_root_tile__(start_height, start_tile):
+    root = Tree()
+    root.create_node(start_height, data={'depth': 0, 'increment': start_tile})
+    root.leaves()
+    return root
+
+def __generate_one_type__(size, config, tiles_tree):
     while len(tiles_tree.leaves()) < size[0] * size[1]:
         for tile in tiles_tree.leaves():
-            increments = choices(config.values, config.table[tile.data['increment']], k=split)
+            increments = choices(config.values, config.table[tile.data['increment']], k=config.split)
             new_tiles = [incr + tile.tag for incr in increments]
             for incr, tile_value in zip(increments, new_tiles):
                 tiles_tree.create_node(
@@ -41,22 +37,11 @@ def __generate_steep__(size, config, tiles_tree):
                 )
 
 
-def __generate_volcano__(size, config, tiles_tree):
-    thresh = 0
-    while len(tiles_tree.leaves()) < size[0] * size[1]:
-        for tile in tiles_tree.leaves():
-            if thresh < config.threshold:
-                increments = choices(config.values, config.table_before[tile.data['increment']], k=split)
-            else:
-                increments = choices(config.values, config.table_after[tile.data['increment']], k=split)
-            new_tiles = [incr + tile.tag for incr in increments]
-            for incr, tile_value in zip(increments, new_tiles):
-                tiles_tree.create_node(
-                    tag=tile_value,
-                    parent=tile.identifier,
-                    data={'depth': tile.data['depth']+1, 'increment': incr},
-                )
-        thresh += 1
+def __generate_connection_tile__(size, tile1, tile2):
+    x1, y1, z1 = tile1
+    x2, y2, z2 = tile2
+    for zz1, zz1 in zip(z1, z2):
+        pass
 
 
 def __create_empty_matrix__(size):
