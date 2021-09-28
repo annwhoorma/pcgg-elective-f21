@@ -40,12 +40,10 @@ possible_mutations = [
 def mutate_one_note(notes, index):
     new_note = None
     counter = 0
-    print('****')
     while new_note is None and counter < 100:
         mutation_type =  randint(0, len(possible_mutations) - 1)
         mutation = possible_mutations[mutation_type]
         new_note = mutation(notes, index)
-        print(notes[index], mutation_type, new_note)
         counter += 1
     return new_note or notes[index]
 
