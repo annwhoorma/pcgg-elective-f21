@@ -26,13 +26,17 @@ def main(gen_type: int):
         z = generate_mountain(size, config)
         draw_one_mountain(x, y, z, ax, start_height)
     elif gen_type == 2:
-        # configs = [[None for _ in range(len(mountain_comb[0]))] for _ in range(len(mountain_comb))]
-        # points = [[None for _ in range(len(mountain_comb[0]))] for _ in range(len(mountain_comb))]
         for i, row in enumerate(mountain_comb):
+            if i == 0:
+                y = [[ii for _ in range(size[0])] for ii in range(i*size[1], i*size[1]+size[1])]
+            else:
+                y = [[ii for _ in range(size[0])] for ii in range(i*size[1]-i, i*size[1]+size[1]-i)]
             for j, mountype in enumerate(row):
                 config = get_config(mountype, start_height, split)
-                x = [[ii for ii in range(j*size[0], j*size[0]+size[0])] for _ in range(size[1])]
-                y = [[ii for _ in range(size[0])] for ii in range(i*size[1], i*size[1]+size[1])]
+                if j == 0:
+                    x = [[ii for ii in range(j*size[0], j*size[0]+size[0])] for _ in range(size[1])]
+                else:
+                    x = [[ii for ii in range(j*size[0]-j, j*size[0]+size[0]-j)] for _ in range(size[1])]
                 z = generate_mountain(size, config)
                 draw_one_mountain(x, y, z, ax, start_height)
     else:
@@ -41,3 +45,5 @@ def main(gen_type: int):
 
 if __name__ == '__main__':
     main()
+
+# test()

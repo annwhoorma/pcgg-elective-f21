@@ -1,4 +1,4 @@
-values = [10, 5, 0, -2.5, -5]
+values = [5, 2.5, 0, -1.75, -2.5]
 start_tile = values[0]
 
 table = {

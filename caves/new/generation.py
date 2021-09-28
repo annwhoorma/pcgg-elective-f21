@@ -2,7 +2,6 @@ from random import choices
 from treelib import Node, Tree
 from typing import Tuple
 import numpy as np
-import click
 
 
 def generate_mountain(size, config):
@@ -37,11 +36,8 @@ def __generate_one_type__(size, config, tiles_tree):
                 )
 
 
-def __generate_connection_tile__(size, tile1, tile2):
-    x1, y1, z1 = tile1
-    x2, y2, z2 = tile2
-    for zz1, zz1 in zip(z1, z2):
-        pass
+def __generate_connection_tile__():
+    pass
 
 
 def __create_empty_matrix__(size):
