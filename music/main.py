@@ -39,7 +39,7 @@ def save_genome_to_midi(filename, genome):
     volume = 127
     time = 0.0
     duration = 1
-    offset = PITCH_LEVEL * 8
+    offset = PITCH_LEVEL * 12
 
     mf.addTrackName(track, time, "Sample Track")
     mf.addTempo(track, time, tempo=BPM)
@@ -88,7 +88,7 @@ def genome_to_melody(genome):
     # [1, 0, 1, 0, 1, 1, 1, 1] -> [[1, 0, 1, 0], [1, 1, 1, 1]]
     notes = [genome[i*BITS_PER_NOTE:i*BITS_PER_NOTE+BITS_PER_NOTE] for i in range(NOTES_PER_BAR * NUMBER_OF_BARS)]
     event_scale = EventScale(SCALE_ROOT, SCALE, PITCH_LEVEL)
-    note_length = float(NOTES_PER_BAR) / BEATS_PER_BAR # for beats
+    note_length = float(BEATS_PER_BAR / NOTES_PER_BAR) # for beats
 
     melody = []
     for note in notes:
@@ -129,13 +129,14 @@ s.boot()
 population = create_population(pop_size=5)
 top_number = int(max(POPULATION_SIZE // 1.8, 4))
 new_genoms_number = POPULATION_SIZE - 3 - (top_number - 2) * 2 # mutations = 2, crossovers = (top_number - 2)*2, add top[0 or 1]
-for i in range(10):
+
+for i in range(EPOCHS):
     print(f'***GEN {i}***')
     fitness_function(population)
     top = rank_population(population)[:top_number]
     
     crossovers = []
-    save_genome_to_midi('hey.mid', melody_to_bin(top[0]))
+    save_genome_to_midi(f'results/gen{i}.mid', melody_to_bin(top[0]))
     for i in range(2, len(top)):
         chosen = randint(0, 1)
         new_pair = crossover(top[chosen], top[i])
@@ -144,5 +145,4 @@ for i in range(10):
     mutations = [melody_to_bin(mutation(melody)) for melody in top[:2]]
     population = create_population(pop_size=3) # new random ones
     population += crossovers + mutations + [melody_to_bin(top[randint(0, 1)])]
-print(population)
 # s.gui(locals())

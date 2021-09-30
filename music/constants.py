@@ -1,5 +1,5 @@
-NUMBER_OF_BARS = 2
-NOTES_PER_BAR = 4
+NUMBER_OF_BARS = 6
+NOTES_PER_BAR = 16
 BITS_PER_NOTE = 4
 BEATS_PER_BAR = 4 # definitely a constant
 SCALE = 'major'
@@ -8,3 +8,4 @@ PITCH_LEVEL = 4
 NUMBER_OF_STEPS = 1 # put > 1 if you want to include chords
 BPM = 60
 VELOCITY = 127
+EPOCHS = 30
