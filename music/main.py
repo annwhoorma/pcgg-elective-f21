@@ -3,11 +3,13 @@ from time import sleep
 from random import sample, choices, randint, choice
 from numpy import arange
 
-from constants import *
+from args import *
 from mutation import mutation
 from crossover import crossover
 from auto_fitness import fitness
 from midiutil import MIDIFile
+
+from time import time
 
 
 GENOME_SIZE = BITS_PER_NOTE * NOTES_PER_BAR * NUMBER_OF_BARS
@@ -53,7 +55,7 @@ def save_genome_to_midi(filename, genome):
 
 def rank_population(population, epoch):
     population = sorted(population, key=lambda g: g[1], reverse=True)
-    if epoch % 1000 == 0:
+    if epoch % 4999 == 0 or epoch % EPOCHS == 0:
         print(i, [j for i, j in population])
     return [pop for pop, rank in population]
 
@@ -80,8 +82,7 @@ def play(events, index):
 def fitness_function(population):
     for i, genome in enumerate(population):
         events, melody, _ = genome_to_melody(genome)
-        # rank = play(events, i)
-        rank = fitness(melody)
+        rank = play(events, i) if FITNESS_FUNCTION == 'manual' else fitness(melody)
         population[i] = (melody, rank)
     return population
 
@@ -124,26 +125,29 @@ def melody_to_bin(melody):
         binary_sequence += [int(char) for char in binary_repr]
     return binary_sequence
 
-s = Server()
-s.setOutputDevice(4)
-s.boot()
 
-population = create_population()
-top_number = max(int(0.1 * POP_SIZE), 4)
-new_genoms_number = POP_SIZE - 3 - (top_number - 2) * 2 # mutations = 2, crossovers = (top_number - 2)*2, add top[0 or 1]
-for i in range(EPOCHS):
-    population = fitness_function(population)
-    top = rank_population(population, i)[:top_number]
-    if i in [EPOCHS - 1, 0]:
-        save_genome_to_midi(f'results/gen{i}.mid', melody_to_bin(top[0]))
-        break
-    crossovers = []
-    for i in range(top_number):
-        chosen = randint(0, top_number//3)
-        new_pair = crossover(top[chosen], top[i])
-        crossovers.append(melody_to_bin(new_pair[0]))
-        crossovers.append(melody_to_bin(new_pair[1]))
-    mutations = [melody_to_bin(mutation(melody)) for melody in top]
-    population = create_population(POP_SIZE // 3) # new random ones
-    population += crossovers + mutations # + [melody_to_bin(m) for m in top[:10]]
-# s.gui(locals())
+if __name__ == '__main__':
+    s = Server()
+    s.setOutputDevice(2)
+    s.boot()
+    
+    start = time()
+    population = create_population()
+    top_number = max(int(0.1 * POP_SIZE), 4)
+    new_genoms_number = POP_SIZE - 3 - (top_number - 2) * 2 # mutations = 2, crossovers = (top_number - 2)*2, add top[0 or 1]
+    for i in range(EPOCHS):
+        population = fitness_function(population)
+        top = rank_population(population, i)[:top_number]
+        if i == EPOCHS - 1:
+            save_genome_to_midi(SAVE_AS or f'results/gen{i}.mid', melody_to_bin(top[0]))
+        crossovers = []
+        for i in range(top_number):
+            chosen = randint(0, top_number//3)
+            new_pair = crossover(top[chosen], top[i])
+            crossovers.append(melody_to_bin(new_pair[0]))
+            crossovers.append(melody_to_bin(new_pair[1]))
+        mutations = [melody_to_bin(mutation(melody)) for melody in top]
+        population = create_population(POP_SIZE // 3) # new random ones
+        population += crossovers + mutations # + [melody_to_bin(m) for m in top[:10]]
+    # s.gui(locals())
+    print(f'Generation time: {time() - start}')

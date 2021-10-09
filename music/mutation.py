@@ -4,7 +4,7 @@ Contains 6 types of mutations
 
 from random import randint
 
-from constants import BITS_PER_NOTE
+from args import BITS_PER_NOTE
 
 def mutation_type_1(notes, index):
     '''
