@@ -9,7 +9,7 @@ NUMBER_OF_STEPS = 1 # put > 1 if you want to include chords - TODO
 BPM = 60
 VELOCITY = 127
 EPOCHS = 10000
-POP_SIZE = 80
+POP_SIZE = 50
 FITNESS_FUNCTION = 'auto' # set to 'manual' if you want to evaluate the melodies manually
 
 SAVE_AS = f'results/p{POP_SIZE}_e{EPOCHS}.mid'
