@@ -22,8 +22,12 @@ More can be found in _presentation-final/final-presentation.pdf_.
 
 ## Midterm Presentation
 
+This presentation was created with [Slidev](https://sli.dev/).
+
 The source code for the midterm presentation can be found in _./presentation/_. It contains description of two portfolio elements with funny images. For unknown reason there was no way to export it as _.pdf_. Therefore, if there is a need to run it, the instructions can be found in the folder.
 
 ## Final Presentation
+
+This presentation was created with [Slidev](https://sli.dev/).
 
 The source code for the final presentation can be found in _./presentation-final_. It contains final description of two portfolio elements with funny images (even more than in the midterm presentation!) and the final project. The _.pdf_ can be found in the same folder under the name _final-presentation.pdf_.
