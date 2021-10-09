@@ -75,8 +75,7 @@ possible_mutations = [
     mutation_type_3,
     mutation_type_4,
     mutation_type_5,
-    mutation_type_6,
-]
+    mutation_type_6,]
 
 def mutate_one_note(notes, index):
     '''
@@ -94,14 +93,26 @@ def mutate_one_note(notes, index):
         counter += 1
     return new_note or notes[index]
 
+def mutate_piece(notes):
+    first_range = (randint(0, len(notes) - 5), randint(0, len(notes) - 5))
+    second_range = (randint(0, len(notes) - 5), randint(0, len(notes) - 5))
+    first_piece = notes[first_range[0]:first_range[1]]
+    notes[first_range[0]:first_range[1]] = notes[second_range[0]:second_range[1]]
+    notes[second_range[0]:second_range[1]] = first_piece
+    return notes
+
 def mutation(notes):
     '''
     Mutates some notes from the melody
     @param notes: the melody (as numbers, e.g. [[1, 14, 15, 15], ...] - for 1 bar containing 4 notes)
     @return changed melody
     '''
-    number_of_notes_to_change = len(notes) // 4
-    for _ in range(number_of_notes_to_change):
-        index = randint(0, len(notes)-1)
-        notes[index] = mutate_one_note(notes, index)
+    ran = randint(0, 3)
+    if ran != 0:
+        number_of_notes_to_change = len(notes) // 3
+        for _ in range(number_of_notes_to_change):
+            index = randint(0, len(notes)-1)
+            notes[index] = mutate_one_note(notes, index)
+    else:
+        notes = mutate_piece(notes)
     return notes

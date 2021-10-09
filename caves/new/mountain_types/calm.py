@@ -1,4 +1,8 @@
-values = [2, 1, 0, 1, 2]
+'''
+The generated mountain will be flat.
+'''
+
+values = [2, 1, 0, -1, -2]
 start_tile = values[0]
 
 table = {

@@ -1,4 +1,8 @@
-values = [4, 2, 0, -2, -4]
+'''
+The generated mountain will be a hill (a bit more steep than a flat mountain).
+'''
+
+values = [3, 1.5, 0, -1, -2]
 start_tile = values[2]
 
 table = {
