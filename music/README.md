@@ -32,7 +32,7 @@ python main.py
 
 | initial # of genoms | number of epochs | time spent, s | best genome’s rank | the result |
 | ------------------- | ---------------- | ------------- | ------------------ | ---------- |
-| 15                  | 5000             | 13.77562      | 59                 | <audio controls src="results/mp3/p15_e5000.mp3">           |
+| 15                  | 5000             | 13.77562      | 59                 | ![](results/mp3/p15_e5000.mp3)           |
 | 15                  | 10000            | 22.68578      | 60                 | <audio controls src="results/mp3/p15_e10000.mp3">           |
 | 15                  | 50000            | 106.16036     | 60                 | <audio controls src="results/mp3/p15_e50000.mp3">           |
 | 50                  | 5000             | 20.84560      | 54                 | <audio controls src="results/mp3/p50_e5000.mp3">           |
