@@ -30,17 +30,16 @@ python main.py
 
 ## The results
 
+Unfortunatelly, I didn't find a way display playable audios here, so I put links.
+
 | initial # of genoms | number of epochs | time spent, s | best genome’s rank | the result |
 | ------------------- | ---------------- | ------------- | ------------------ | ---------- |
-| 15                  | 5000             | 13.77562      | 59                 | <audio controls="controls">
-  <source type="audio/mp3" src="results/mp3/p15_e10000.mp3"></source>
-  <p>Your browser does not support the audio element.</p>
-</audio>           |
-| 15                  | 10000            | 22.68578      | 60                 | <audio controls src="results/mp3/p15_e10000.mp3">           |
-| 15                  | 50000            | 106.16036     | 60                 | <audio controls src="results/mp3/p15_e50000.mp3">           |
-| 50                  | 5000             | 20.84560      | 54                 | <audio controls src="results/mp3/p50_e5000.mp3">           |
-| 50                  | 10000            | 39.67426      | 65                 | <audio controls src="results/mp3/p50_e10000.mp3">           |
-| 50                  | 50000            | 188.70546     | 54                 | <audio controls src="results/mp3/p50_e50000.mp3">           |
-| 80                  | 5000             | 32.15173      | 53                 | <audio controls src="results/mp3/p80_e5000.mp3">           |
-| 80                  | 10000            | 61.03217      | 79                 | <audio controls src="results/mp3/p80_e10000.mp3">           |
-| 80                  | 50000            | 291.33743     | 73                 | <audio controls src="results/mp3/p80_e50000.mp3">           |
+| 15                  | 5000             | 13.77562      | 59                 | [link to the file](https://github.com/annwhoorma/pcgg-portfolio/blob/main/music/results/mp3/p15_e5000.mp3)           |
+| 15                  | 10000            | 22.68578      | 60                 | [link to the file](https://github.com/annwhoorma/pcgg-portfolio/blob/main/music/results/mp3/p15_e10000.mp3)           |
+| 15                  | 50000            | 106.16036     | 60                 | [link to the file](https://github.com/annwhoorma/pcgg-portfolio/blob/main/music/results/mp3/p15_e50000.mp3)           |
+| 50                  | 5000             | 20.84560      | 54                 | [link to the file](https://github.com/annwhoorma/pcgg-portfolio/blob/main/music/results/mp3/p50_e5000.mp3)           |
+| 50                  | 10000            | 39.67426      | 65                 | [link to the file](https://github.com/annwhoorma/pcgg-portfolio/blob/main/music/results/mp3/p50_e10000.mp3)           |
+| 50                  | 50000            | 188.70546     | 54                 | [link to the file](https://github.com/annwhoorma/pcgg-portfolio/blob/main/music/results/mp3/p50_e50000.mp3)           |
+| 80                  | 5000             | 32.15173      | 53                 | [link to the file](https://github.com/annwhoorma/pcgg-portfolio/blob/main/music/results/mp3/p80_e5000.mp3)           |
+| 80                  | 10000            | 61.03217      | 79                 | [link to the file](https://github.com/annwhoorma/pcgg-portfolio/blob/main/music/results/mp3/p80_e10000.mp3)           |
+| 80                  | 50000            | 291.33743     | 73                 | [link to the file](https://github.com/annwhoorma/pcgg-portfolio/blob/main/music/results/mp3/p80_e50000.mp3)           |
