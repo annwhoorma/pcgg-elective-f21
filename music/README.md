@@ -8,7 +8,7 @@ The music is generated using evolutionary algorithm.
     - `NUMBER_OF_BARS` - number of bars in the final melody
     - `NOTES_PER_BAR` - number of notes in one bar (according to music "rules" it should be 1, 2, 4, 8, or 16 - more just doesn't make sense)
     - `BITS_PER_NOTE` - number of bits to encode a note. The less bits, the smaller span of notes is available for generation.
-    - `BEATS_PER_BAR` # definitely a constant
+    - `BEATS_PER_BAR` - number of beats per bar; equals to 4 and shouldn't be changed.
     - `SCALE` - scale of the melody ('major' or 'minor')
     - `SCALE_ROOT` - scale root of the melody ('A', 'B', 'C' etc)
     - `PITCH_LEVEL` - level of pitch of the melody; may sound differently after converting _.mid_ to _.mp3_
