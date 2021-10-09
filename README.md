@@ -10,7 +10,7 @@ The instructions on how to run it are in the folder.
 
 ## Portfolio. Element 2
 
-The second element of the portfolio is mountains generation using L-Systems. It is based on the paper by Ashlock, D. et al: ![Evolution of L-systems for compact virtual landscape generation](https://www.researchgate.net/figure/The-axiom-and-rules-for-a-simple-two-dimensional-L-system-together-with-two-expansion-of_fig1_221007670). The documentation is also there under _music-documentation.pdf_ name.
+The second element of the portfolio is mountains generation using L-Systems. It is based on the paper by Ashlock, D. et al: [Evolution of L-systems for compact virtual landscape generation](https://www.researchgate.net/figure/The-axiom-and-rules-for-a-simple-two-dimensional-L-system-together-with-two-expansion-of_fig1_221007670). The documentation is also there under _music-documentation.pdf_ name.
 
 The instructions on how to run it are in the folder.
 
