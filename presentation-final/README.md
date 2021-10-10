@@ -1,4 +1,4 @@
-# Midterm presentation
+# Final presentation
 
 Even though there is a _.pdf_ file generated for this presentation, it can be viewed very easily by following these commands:
 
