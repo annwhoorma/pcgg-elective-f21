@@ -1,6 +1,6 @@
 # Final presentation
 
-Even though there is a _.pdf_ file generated for this presentation, it can be viewed very easily by following these commands:
+Even though there is a _.pdf_ file generated for this presentation (it's in this folder, called _final\_presentation.pdf_), it can be viewed very easily by following these commands:
 
 ```bash
 yarn
