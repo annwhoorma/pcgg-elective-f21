@@ -93,9 +93,10 @@ def mutate_one_note(notes, index):
         counter += 1
     return new_note or notes[index]
 
-def mutate_piece(notes):
-    first_range = (randint(0, len(notes) - 5), randint(0, len(notes) - 5))
-    second_range = (randint(0, len(notes) - 5), randint(0, len(notes) - 5))
+def mutate_piece(notes, piecelen=4):
+    rand1, rand2 = randint(0, len(notes) - piecelen - 1), randint(1, len(notes) - piecelen - 1)
+    first_range = (rand1, rand1+piecelen)
+    second_range = (rand2, rand2+piecelen)
     first_piece = notes[first_range[0]:first_range[1]]
     notes[first_range[0]:first_range[1]] = notes[second_range[0]:second_range[1]]
     notes[second_range[0]:second_range[1]] = first_piece

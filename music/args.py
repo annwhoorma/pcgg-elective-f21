@@ -1,6 +1,6 @@
 NUMBER_OF_BARS = 2
 NOTES_PER_BAR = 16
-BITS_PER_NOTE = 4
+BITS_PER_NOTE = 5
 BEATS_PER_BAR = 4 # definitely a constant
 SCALE = 'major'
 SCALE_ROOT = 'C'
