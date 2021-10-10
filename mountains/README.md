@@ -5,13 +5,13 @@ The mountains are generated using L-system method created in 2005 by Daniel Ashl
 **To run the project, do the following:**
 
 1. Go to the file _args.py_ which contains user input.
-    - `start_height = 20` - the start level for tile generation; it doesn't affect the visualization though.
+    - `start_height = 20` - the starting level for tile generation; it doesn't affect the visualization though.
 
     - `size` - size of one tile; must be a degree of 2
 
     - `mountain_type` - type of one mountain to generate; possible types are: `TileType.CALM`, `TileType.HILL`, `TileType.STEEP`.
 
-    - `mountain_comb` - an two-dimensional array containing a combination of mountain tile types to construct. When constructed, all the tiles are connected.
+    - `mountain_comb` - a two-dimensional array containing a combination of mountain tile types to construct. When constructed, all the tiles are connected.
 
 2. In the terminal, run:
 
