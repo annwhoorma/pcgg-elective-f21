@@ -11,7 +11,7 @@ size = (16, 16)
 assert size[0] == size[1]
 
 # will be used to generate one tile
-mountain_type = TileType.STEEP
+mountain_type = TileType.HILL
 
 # will be used to generate a forest of tiles
 mountain_comb = [
